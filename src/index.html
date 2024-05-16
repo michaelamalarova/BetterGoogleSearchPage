@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search Extractor</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>Google Search Extractor</h1>
+    <!-- Embedded Custom Search Engine -->
+    <script async src="https://cse.google.com/cse.js?cx=7628e8eba52064244"></script>
+    <div class="gcse-search"></div>
+    <!-- Search Form for API -->
+    <form id="searchForm" onsubmit="event.preventDefault(); searchGoogle();">
+        <input type="text" id="searchQuery" placeholder="Enter keyword">
+        <button type="submit">Search</button>
+    </form>
+    <pre id="results"></pre>
+    <button onclick="downloadResults()">Download Results</button>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
