@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Search Extractor</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css"> <!-- Link to the centralized CSS file -->
 </head>
 <body>
-    <h1>Google Search Extractor</h1>
-    <!-- Embedded Custom Search Engine -->
-    <script async src="https://cse.google.com/cse.js?cx=7628e8eba52064244"></script>
-    <div class="gcse-search"></div>
-    <!-- Search Form for API -->
-    <form id="searchForm" onsubmit="event.preventDefault(); searchGoogle();">
-        <input type="text" id="searchQuery" placeholder="Enter keyword">
-        <button type="submit">Search</button>
-    </form>
-    <pre id="results"></pre>
-    <button onclick="downloadResults()">Download Results</button>
+    <div class="main-content">
+        <div class="background"></div>
+        <div class="header-container">
+            <h1>Internet Extractor</h1>
+            <div class="search-container">
+                <img src="assets/gifs/nyan-cat.gif" alt="Nyan Cat" class="nyan-cat">
+                <form id="searchForm" onsubmit="event.preventDefault(); searchGoogle();">
+                    <input type="text" id="searchQuery" placeholder="Enter keyword">
+                    <button type="submit" class="cute">
+                        <img src="assets/icons/super-cute-search-icon.png" alt="Search" class="search-icon">
+                    </button>
+                </form>
+            </div>
+        </div>
+        <button id="downloadButton" class="hidden" onclick="downloadResults()">Download Results</button>
+        <pre id="results" class="hidden"></pre>
+    </div>
+    <footer>
+        &copy; 2024 AlmostInizio s.r.o. All rights reserved.
+    </footer>
+    <script src="assets/icon-mapping.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 </html>

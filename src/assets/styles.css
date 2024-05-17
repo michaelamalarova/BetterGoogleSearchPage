@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+
+/* Reset some default styles for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* Style the body and html to take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #003366;
+    margin: 0; /* Ensure there is no margin causing overflow */
+    padding: 0;
+}
+
+/* Main content should expand to take up available space */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-container {
+    z-index: 3
+}
+
+/* Style the table */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    z-index: 4;
+}
+
+.results-table th {
+    background-color: palevioletred;
+    border: 1px solid black;
+
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap;         /* Allows the text to wrap to the next line */
+}
+
+.results-table td {
+    border: 1px solid palevioletred;
+    background-color: white;
+
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;       /* Ensures long words break and wrap to the next line */
+    white-space: normal;         /* Allows the text to wrap to the next line */
+    word-break: break-word;      /* Ensures long words break and wrap to the next line */
+}
+
+.results-table .link {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    word-wrap:unset
+}
+
+.results-table .link img {
+    margin-left: 5px;
+}
+
+
+/* Style the heading */
+h1 {
+    position: relative;
+    margin-bottom: 10px;
+    margin-right: 72px;
+    z-index: 4;
+    color: lightpink;
+    font-size: 3em;
+}
+
+/* Style the form */
+form {
+    margin-bottom: 20px;
+}
+
+/* Style the input field */
+input[type="text"] {
+    position: relative;
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-right: 10px;
+    z-index: 4
+}
+
+/* Style the buttons */
+button.big {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button.cute {
+    position: relative;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    margin-left: -15px;
+    z-index: 4
+}
+
+/* Style the results section */
+pre {
+    background-color: lightpink;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    z-index: 5; /* Place the image behind the text */
+
+}
+
+/* Footer styles */
+footer {
+    background-color: pink;
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid palevioletred;
+    flex-shrink: 0; /* Ensure the footer doesn't shrink */
+}
+
+/* Hidden class to hide elements */
+.hidden {
+    display: none;
+}
+
+.background {
+    position: absolute;
+    background-image: url('background/nyan-cat-background.png'); /* Path to your background image */
+    height: 300px; 
+    width: 100%;
+    z-index: 0
+}
+
+.header-container {
+    position: relative;
+
+    margin-top: 40px;
+    margin-left: -15px;
+}
+
+.nyan-cat {
+    position: absolute;
+    top: -159px; /* Adjust to position correctly under the heading */
+    left: 55.5%;
+    transform: translateX(-50%);
+    z-index: 2; /* Place the image behind the text */
+    width: 1000px; /* Adjust width to fit the rainbow under the search */
+    height: auto;
+    margin-left: -15px;
+}
+
+.search-icon {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    background: transparent; /* Ensure no background color */
+    margin-bottom: -15px;
+}
