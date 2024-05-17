@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Search Extractor</title>
-    <link rel="stylesheet" href="assets/styles.css"> <!-- Link to the centralized CSS file -->
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
     <div class="main-content">
-        <div class="background"></div>
+        <div class="header-background"></div>
         <div class="header-container">
-            <h1>Internet Extractor</h1>
-            <div class="search-container">
-                <img src="assets/gifs/nyan-cat.gif" alt="Nyan Cat" class="nyan-cat">
-                <form id="searchForm" onsubmit="event.preventDefault(); searchGoogle();">
-                    <input type="text" id="searchQuery" placeholder="Enter keyword">
-                    <button type="submit" class="cute">
-                        <img src="assets/icons/super-cute-search-icon.png" alt="Search" class="search-icon">
-                    </button>
-                </form>
-            </div>
+            <h1 class="shift-left">Internet Extractor</h1>
+            <img src="assets/gifs/nyan-cat.gif" alt="Nyan Cat gif" class="nyan-cat">
+            <form id="searchForm" onsubmit="event.preventDefault(); searchGoogle();" aria-label="Search Form">
+                <input type="text" id="searchQuery" placeholder="mňau mňau mňau"  aria-label="Search Query">
+                <button type="submit" class="cute" aria-label="Search Button">
+                    <img src="assets/icons/super-cute-search-icon.png" alt="Search icon" class="search-icon">
+                </button>
+            </form>
         </div>
-        <button id="downloadButton" class="hidden" onclick="downloadResults()">Download Results</button>
-        <pre id="results" class="hidden"></pre>
+        <button id="downloadButton" class="download-button hidden" onclick="downloadResults()">
+            <img src="assets/icons/download-button-icon.png" alt="Download icon" class="download-button-image">
+            <span class="button-text">Download</span>
+        </button>
+        <pre id="results" class="hidden no-download-button"></pre>
     </div>
     <footer>
         &copy; 2024 AlmostInizio s.r.o. All rights reserved.
     </footer>
-    <script src="assets/icon-mapping.js"></script>
+
+
+    <audio id="backgroundMusic" loop>
+        <source src="assets/mp3/test.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="config.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 </html>

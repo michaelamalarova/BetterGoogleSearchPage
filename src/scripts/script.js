@@ -1,14 +1,5 @@
-//Programmable Search Engine control panel.: nazev = InizioJobTaskProgrammableSearchEngine
-//Google Custom Search JSON API project name = InizioJobTask
-//API key = AIzaSyAEl4Ie76VvLvEz9WPFV8BUNtbGIt1JjYE
-
-/*
-<script async src="https://cse.google.com/cse.js?cx=7628e8eba52064244">
-</script>
-<div class="gcse-search"></div>
-*/ 
-
 async function searchGoogle() {
+
     const query = document.getElementById('searchQuery').value;
     const resultsElement = document.getElementById('results');
 
@@ -16,14 +7,14 @@ async function searchGoogle() {
     resultsElement.textContent = 'Searching...';
 
     try {
-        const apiKey = 'AIzaSyAEl4Ie76VvLvEz9WPFV8BUNtbGIt1JjYE';
-        const cx = '7628e8eba52064244';
+        const apiKey = await window.config.GOOGLE_API_KEY;
+        const cx = await window.config.GOOGLE_CX;
         const response = await fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${cx}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const results = await response.json();
-        window.searchResults = results; // Save results for downloading
+        window.searchResults = results;
         resultsElement.textContent = null;
         displayResults(query, results);
 
@@ -36,7 +27,12 @@ async function searchGoogle() {
 
 function displayResults(query, results) {
     const resultsElement = document.getElementById('results');
-    downloadButton.classList.remove('hidden');  // Show the download button
+    const downloadButton = document.getElementById('downloadButton');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    downloadButton.classList.remove('hidden');
+    resultsElement.classList.remove('no-download-button');
+
 
     // Create table
     const table = document.createElement('table');
@@ -77,7 +73,7 @@ function displayResults(query, results) {
         link.href = item.link;
         link.target = '_blank';
         const linkIcon = document.createElement('img');
-        linkIcon.src = window.iconMapping.link;
+        linkIcon.src = 'assets/icons/link-icon.png';
         linkIcon.alt = 'Link Icon';
         link.appendChild(linkIcon);
         const linkContainer = document.createElement('div');
@@ -88,6 +84,10 @@ function displayResults(query, results) {
         row.appendChild(tdSnippet);
         row.appendChild(tdLink);
         tbody.appendChild(row);
+
+        backgroundMusic.play().catch(error => {
+            console.error('Error playing background music:', error);
+        });
 });
 
 table.appendChild(thead);
@@ -107,3 +107,4 @@ function downloadResults() {
     a.click();
     URL.revokeObjectURL(url);
 }
+

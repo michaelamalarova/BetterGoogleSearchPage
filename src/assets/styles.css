@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
 
-
-/* Reset some default styles for consistency across browsers */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +7,16 @@
     font-family: 'Exo 2', sans-serif;
 }
 
-/* Style the body and html to take full height */
+.shift-left {
+    position: relative;
+    left: -1.5%;
+    transform: translateX(-1.5%);
+}
+
+.hidden {
+    display: none;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -18,26 +25,124 @@ html, body {
     flex-direction: column;
     overflow-x: hidden;
     background-color: #003366;
-    margin: 0; /* Ensure there is no margin causing overflow */
-    padding: 0;
 }
 
-/* Main content should expand to take up available space */
 .main-content {
     flex: 1;
     padding: 20px;
     text-align: center;
 }
 
-.search-container {
-    z-index: 3
+.header-background {
+    position: absolute;
+    background-image: url('background/nyan-cat-background.png');
+    height: 300px; 
+    width: 100%;
+    z-index: 0
 }
 
-/* Style the table */
+.header-container {
+    position: relative;
+    margin-top: 70px;
+}
+
+h1 {
+    position: relative;
+    margin-bottom: 20px; 
+    z-index: 4;
+    color: lightpink;
+    font-size: 4em;
+}
+
+.nyan-cat {
+    position: absolute;
+    top: -182px;
+    left: 55.5%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 1200px;
+    height: auto;
+
+}
+
+form {
+}
+
+input[type="text"] {
+    position: relative;
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    z-index: 4
+}
+
+button.cute {
+    position: relative;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 4
+}
+
+.search-icon {
+    width: 75px;
+    height: 75px;
+    background: transparent;
+    margin-bottom: -30px;
+    object-fit: contain;
+
+}
+
+button.download-button {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent; /* Ensure no background color */
+    margin-top: 25px;
+    margin-bottom: 20px;
+    z-index: 5
+
+}
+
+.download-button-image {
+    display: block;
+    width: 160px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+}
+
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    color: black;
+    font-weight: bold;
+}
+
+pre {
+    position: absolute;
+    background-color: lightpink;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    z-index: 5;
+}
+
+pre.no-download-button {
+    margin-top: 50px;
+}
+
 .results-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
     z-index: 4;
 }
 
@@ -47,7 +152,7 @@ html, body {
 
     padding: 8px;
     text-align: left;
-    white-space: nowrap;         /* Allows the text to wrap to the next line */
+    white-space: nowrap;
 }
 
 .results-table td {
@@ -56,9 +161,9 @@ html, body {
 
     padding: 8px;
     text-align: left;
-    word-wrap: break-word;       /* Ensures long words break and wrap to the next line */
-    white-space: normal;         /* Allows the text to wrap to the next line */
-    word-break: break-word;      /* Ensures long words break and wrap to the next line */
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .results-table .link {
@@ -72,109 +177,31 @@ html, body {
     margin-left: 5px;
 }
 
-
-/* Style the heading */
-h1 {
-    position: relative;
-    margin-bottom: 10px;
-    margin-right: 72px;
-    z-index: 4;
-    color: lightpink;
-    font-size: 3em;
-}
-
-/* Style the form */
-form {
-    margin-bottom: 20px;
-}
-
-/* Style the input field */
-input[type="text"] {
-    position: relative;
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    margin-right: 10px;
-    z-index: 4
-}
-
-/* Style the buttons */
-button.big {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-button.cute {
-    position: relative;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    margin-left: -15px;
-    z-index: 4
-}
-
-/* Style the results section */
-pre {
-    background-color: lightpink;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: left;
-    position: relative;
-    z-index: 5; /* Place the image behind the text */
-
-}
-
-/* Footer styles */
 footer {
     background-color: pink;
     padding: 10px 20px;
     text-align: center;
     border-top: 1px solid palevioletred;
-    flex-shrink: 0; /* Ensure the footer doesn't shrink */
+    flex-shrink: 0;
 }
 
-/* Hidden class to hide elements */
-.hidden {
-    display: none;
+.music-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
 }
 
-.background {
-    position: absolute;
-    background-image: url('background/nyan-cat-background.png'); /* Path to your background image */
-    height: 300px; 
-    width: 100%;
-    z-index: 0
+.music-controls button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
 }
 
-.header-container {
-    position: relative;
-
-    margin-top: 40px;
-    margin-left: -15px;
-}
-
-.nyan-cat {
-    position: absolute;
-    top: -159px; /* Adjust to position correctly under the heading */
-    left: 55.5%;
-    transform: translateX(-50%);
-    z-index: 2; /* Place the image behind the text */
-    width: 1000px; /* Adjust width to fit the rainbow under the search */
-    height: auto;
-    margin-left: -15px;
-}
-
-.search-icon {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    background: transparent; /* Ensure no background color */
-    margin-bottom: -15px;
+.music-controls button:hover {
+    background-color: #0056b3;
 }
