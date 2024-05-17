@@ -58,29 +58,11 @@ GOOGLE-SEARCH-EXTRACTOR/
 - Contains the search form, results display area, and the download button.
 
 ### assets/styles.css
-- Contains all the CSS styles for the project, including layout, colors, and responsive design.
+- Contains all the CSS styles for the project.
 
-### assets/icon-mapping.js
-- Contains the mapping for icons used in the project.
-- Example:
-    ```javascript
-    window.imagesMapping = {
-        linkIcon: 'assets/icons/link-icon.png',
-        // Add other mappings as needed
-    };
-    ```
 
 ### scripts/script.js
 - Contains the JavaScript logic for handling the search functionality, displaying results, and downloading the results.
 
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you have any suggestions or improvements.
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Contact
-For any inquiries, please contact:
-- Name: [Your Name]
-- Email: [Your Email]
-
