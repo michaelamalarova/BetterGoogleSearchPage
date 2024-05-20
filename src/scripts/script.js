@@ -1,23 +1,42 @@
 async function searchGoogle() {
-
     const query = document.getElementById('searchQuery').value;
     const resultsElement = document.getElementById('results');
-
     resultsElement.classList.remove('hidden');
     resultsElement.textContent = 'Searching...';
+
+    const results = {
+        items: []
+    };
 
     try {
         const apiKey = await window.config.GOOGLE_API_KEY;
         const cx = await window.config.GOOGLE_CX;
-        const response = await fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${cx}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const results = await response.json();
+        let startIndex = 1;
+        let totalResults = 0;
+
+        do {
+            const response = await fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${cx}&start=${startIndex}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            if (!data.items || data.items.length === 0) {
+                break;
+            }
+
+            results.items.push(...data.items);
+            totalResults = data.searchInformation.totalResults;
+            startIndex += data.items.length;
+
+            // Stop if we have more than or equal to 60 results or no more items
+            if (startIndex > 60 || startIndex > totalResults) {
+                break;
+            }
+        } while (results.items.length < 60);
+
         window.searchResults = results;
         resultsElement.textContent = null;
         displayResults(query, results);
-
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         resultsElement.classList.remove('hidden');
@@ -32,7 +51,6 @@ function displayResults(query, results) {
 
     downloadButton.classList.remove('hidden');
     resultsElement.classList.remove('no-download-button');
-
 
     // Create table
     const table = document.createElement('table');
@@ -88,11 +106,12 @@ function displayResults(query, results) {
         backgroundMusic.play().catch(error => {
             console.error('Error playing background music:', error);
         });
-});
+    });
 
-table.appendChild(thead);
-table.appendChild(tbody);
-resultsElement.appendChild(table);}
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    resultsElement.appendChild(table);
+}
 
 function downloadResults() {
     if (!window.searchResults) {
@@ -107,4 +126,3 @@ function downloadResults() {
     a.click();
     URL.revokeObjectURL(url);
 }
-
