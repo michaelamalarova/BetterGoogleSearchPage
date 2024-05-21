@@ -6,8 +6,13 @@ async function searchGoogle() {
     resultsElement.classList.remove('hidden');
     resultsElement.textContent = 'Searching...';
 
+    if (!query.trim()) {
+        resultsElement.textContent = 'Please enter a search query.';
+        return;
+    }
+    
     try {
-        const response = await fetch(`/.netlify/functions/search?q=${encodeURIComponent(query)}`); // For Netlify
+        const response = await fetch(`/netlify/functions/search?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
