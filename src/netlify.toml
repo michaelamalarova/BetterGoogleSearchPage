@@ -1,6 +1,6 @@
 [build]
   base = "src"
-  publish = "src/public"
+  publish = "src"
   functions = "src/functions"
 
 [[redirects]]
