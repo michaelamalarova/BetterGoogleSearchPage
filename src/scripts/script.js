@@ -2,7 +2,7 @@ async function searchGoogle() {
 
     const query = document.getElementById('searchQuery').value;
     const resultsElement = document.getElementById('results');
-    const URL = process.env.URL
+    
     resultsElement.classList.remove('hidden');
     resultsElement.textContent = 'Searching...';
 
@@ -12,7 +12,7 @@ async function searchGoogle() {
     }
     
     try {
-        const response = await fetch(`https://${URL}/.netlify/functions/search?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`https://${process.env.URL}/.netlify/functions/search?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
